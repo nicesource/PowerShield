@@ -56,7 +56,7 @@ local function check_member_super(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = msg.to.id
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been added!'
+	  local text = '💠سوپر گروه اضافه شد'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -80,7 +80,7 @@ local function check_member_superrem(cb_extra, success, result)
       end
       data[tostring(groups)][tostring(msg.to.id)] = nil
       save_data(_config.moderation.data, data)
-	  local text = 'SuperGroup has been removed'
+	  local text = '💠سوپرگروه حذف شد'
       return reply_msg(msg.id, text, ok_cb, false)
     end
   end
@@ -189,11 +189,11 @@ local function lock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'yes' then
-    return reply_msg(msg.id,"> #Link posting is #already locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒لینک از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Link posting has been #locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒فرستادن لینک قفل شد", ok_cb, false)
   end
 end
 
@@ -203,11 +203,11 @@ local function unlock_group_links(msg, data, target)
   end
   local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
-    return reply_msg(msg.id,"> #Link posting is #not locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓فرستادن لینک از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Link posting has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓فرستادن لینک آزاد شد", ok_cb, false)
   end
 end
 
@@ -220,11 +220,11 @@ local function lock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'yes' then
-    return reply_msg(msg.id,"> SuperGroup #spam is #already locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒اسپم کردن از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_spam'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> SuperGroup #spam has been #locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒اسپم کردن قفل شد", ok_cb, false)
   end
 end
 
@@ -234,11 +234,11 @@ local function unlock_group_spam(msg, data, target)
   end
   local group_spam_lock = data[tostring(target)]['settings']['lock_spam']
   if group_spam_lock == 'no' then
-    return reply_msg(msg.id,"> SuperGroup #spam is #not locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓اسپم کردن از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_spam'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> SuperGroup #spam has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓اسپم کردن آزاد شد", ok_cb, false)
   end
 end
 
@@ -248,11 +248,11 @@ local function lock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'yes' then
-    return reply_msg(msg.id,"> #Spamming is #already locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒اسپم از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['flood'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Spamming has been #locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒اسپم قفل شد", ok_cb, false)
   end
 end
 
@@ -262,11 +262,11 @@ local function unlock_group_flood(msg, data, target)
   end
   local group_flood_lock = data[tostring(target)]['settings']['flood']
   if group_flood_lock == 'no' then
-    return reply_msg(msg.id,"> #Spamming is #not locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓اسپم از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['flood'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Spamming has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓اسپم آزاد شد", ok_cb, false)
   end
 end
 
@@ -304,11 +304,11 @@ local function lock_group_tag(msg, data, target)
   end
   local group_tag_lock = data[tostring(target)]['settings']['lock_tag']
   if group_tag_lock == 'yes' then
-    return reply_msg(msg.id,"> #Tag is #already locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒تگ از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_tag'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Tag has been #locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒تگ قفل شد", ok_cb, false)
   end
 end
 
@@ -318,11 +318,11 @@ local function unlock_group_tag(msg, data, target)
   end
   local group_tag_lock = data[tostring(target)]['settings']['lock_tag']
   if group_tag_lock == 'no' then
-    return reply_msg(msg.id,"> #Tag is #already unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓تگ از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_tag'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> Tag has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓تگ آزاد شد", ok_cb, false)
   end
 end
 -- WebPage Fanction by MehdiHS!
@@ -332,11 +332,11 @@ local function lock_group_webpage(msg, data, target)
   end
   local group_webpage_lock = data[tostring(target)]['settings']['lock_webpage']
   if group_webpage_lock == 'yes' then
-    return reply_msg(msg.id,"> #WebLink Posting is #already locked!", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒لینک سایت از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_webpage'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #WebLink posting has been #locked", ok_cb, false)
+    return reply_msg(msg.id,">🔒لینک سایت قفل شد", ok_cb, false)
   end
 end
 
@@ -346,11 +346,11 @@ local function unlock_group_webpage(msg, data, target)
   end
   local group_webpage_lock = data[tostring(target)]['settings']['lock_webpage']
   if group_webpage_lock == 'no' then
-    return reply_msg(msg.id,"> #WebLink Posting is #already unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓لینک سایت از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_webpage'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #WebLink posting has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓لینک سایت آزاد شد", ok_cb, false)
   end
 end
 -- Anti Fwd Fanction by MehdiHS!
@@ -360,11 +360,11 @@ local function lock_group_fwd(msg, data, target)
   end
   local group_fwd_lock = data[tostring(target)]['settings']['lock_fwd']
   if group_fwd_lock == 'yes' then
-    return reply_msg(msg.id,"> #Forward Msg is #already locked!", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒فوروارد از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_fwd'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Forward Msg has been #locked", ok_cb, false)
+    return reply_msg(msg.id,">🔒فوروارد قفل شد", ok_cb, false)
   end
 end
 
@@ -374,11 +374,11 @@ local function unlock_group_fwd(msg, data, target)
   end
   local group_fwd_lock = data[tostring(target)]['settings']['lock_fwd']
   if group_fwd_lock == 'no' then
-    return reply_msg(msg.id,"> #Forward Msg is #already unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓فوروارد از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_fwd'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Forward Msg has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓فوروارد آزاد شد", ok_cb, false)
   end
 end
 -- lock badword Fanction by MehdiHS!
@@ -388,11 +388,11 @@ local function lock_group_badw(msg, data, target)
   end
   local group_badw_lock = data[tostring(target)]['settings']['lock_badw']
   if group_badw_lock == 'yes' then
-    return reply_msg(msg.id,"> #Badwords is #already locked!", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒کلمات بد از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_badw'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Badwords Has been #locked!", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒کلمات بد قفل شد", ok_cb, false)
   end
 end
 
@@ -402,11 +402,11 @@ local function unlock_group_badw(msg, data, target)
   end
   local group_badw_lock = data[tostring(target)]['settings']['lock_badw']
   if group_badw_lock == 'no' then
-    return reply_msg(msg.id,"> #Badwords is #already unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓کلمات بد از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_badw'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Badwords has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓کلمات بد آزاد شد", ok_cb, false)
   end
 end
 -- lock emoji Fanction by MehdiHS!
@@ -416,11 +416,11 @@ local function lock_group_emoji(msg, data, target)
   end
   local group_emoji_lock = data[tostring(target)]['settings']['lock_emoji']
   if group_emoji_lock == 'yes' then
-    return reply_msg(msg.id,"> #Emoji is #already locked!", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒ایموجی از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_emoji'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Emoji Has been #locked!", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒ایموجی قفل شد", ok_cb, false)
   end
 end
 
@@ -430,11 +430,11 @@ local function unlock_group_emoji(msg, data, target)
   end
   local group_emoji_lock = data[tostring(target)]['settings']['lock_emoji']
   if group_emoji_lock == 'no' then
-    return reply_msg(msg.id,"> #Emoji is #already unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓ایموجی از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_emoji'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Emoji has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓ایموجی آزاد شد", ok_cb, false)
   end
 end
 -- lock English Fanction by MehdiHS!
@@ -444,11 +444,11 @@ local function lock_group_eng(msg, data, target)
   end
   local group_eng_lock = data[tostring(target)]['settings']['lock_eng']
   if group_eng_lock == 'yes' then
-    return reply_msg(msg.id,"> #English is #already locked!", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒انگلیسی از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_eng'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #English Has been #locked!", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒انگلیسی قفل شد", ok_cb, false)
   end
 end
 
@@ -458,11 +458,11 @@ local function unlock_group_eng(msg, data, target)
   end
   local group_eng_lock = data[tostring(target)]['settings']['lock_eng']
   if group_eng_lock == 'no' then
-    return reply_msg(msg.id,"> #English is #already unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓انگلیسی از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_eng'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #English has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓انگلیسی آزاد شد", ok_cb, false)
   end
 end
 local function unlock_group_membermod(msg, data, target)
@@ -471,11 +471,11 @@ local function unlock_group_membermod(msg, data, target)
   end
   local group_member_lock = data[tostring(target)]['settings']['lock_member']
   if group_member_lock == 'no' then
-    return reply_msg(msg.id,"> SuperGroup #members are #not locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓پیوستن یا افزودن اعضا از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_member'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> SuperGroup #members has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓پیوستن یا افزودن اعضا آزاد شد", ok_cb, false)
   end
 end
 
@@ -541,11 +541,11 @@ local function lock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'yes' then
-    return reply_msg(msg.id,"> #Sticker posting is #already locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒استیکر از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Sticker posting has been #locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒استیکر قفل شد", ok_cb, false)
   end
 end
 
@@ -555,11 +555,11 @@ local function unlock_group_sticker(msg, data, target)
   end
   local group_sticker_lock = data[tostring(target)]['settings']['lock_sticker']
   if group_sticker_lock == 'no' then
-    return reply_msg(msg.id,"> #Sticker posting is #already unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓استیکر از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_sticker'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Sticker posting has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓استیکر آزاد شد", ok_cb, false)
   end
 end
 
@@ -569,11 +569,11 @@ local function lock_group_contacts(msg, data, target)
   end
   local group_contacts_lock = data[tostring(target)]['settings']['lock_contacts']
   if group_contacts_lock == 'yes' then
-    return reply_msg(msg.id,"> #Contact posting is #already locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒شِیر کردن از قبل قفل بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_contacts'] = 'yes'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Contact posting has been #locked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔒شِیر کردن قفل شد", ok_cb, false)
   end
 end
 
@@ -583,11 +583,11 @@ local function unlock_group_contacts(msg, data, target)
   end
   local group_contacts_lock = data[tostring(target)]['settings']['lock_contacts']
   if group_contacts_lock == 'no' then
-    return reply_msg(msg.id,"> #Contact posting is #already unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓شِیر کردن از قبل آزاد بود", ok_cb, false)
   else
     data[tostring(target)]['settings']['lock_contacts'] = 'no'
     save_data(_config.moderation.data, data)
-    return reply_msg(msg.id,"> #Contact posting has been #unlocked", ok_cb, false)
+    return reply_msg(msg.id,"> 🔓شِیر کردن آزاد شد", ok_cb, false)
   end
 end
 
