@@ -128,22 +128,6 @@ local function callback_clean_bots (extra, success, result)
 		kick_user(bot_id,channel_id)
 	end
 end
---Get and output info about supergroup
-local function callback_info(cb_extra, success, result)
-local title ="Info for SuperGroup > ["..result.title.."]\n\n"
-local admin_num = "Admin count > "..result.admins_count.."\n"
-local user_num = "User count > "..result.participants_count.."\n"
-local kicked_num = "Kicked user count > "..result.kicked_count.."\n"
-local channel_id = "ID > "..result.peer_id.."\n"
-if result.username then
-	channel_username = "Username > @"..result.username
-else
-	channel_username = ""
-end
-local text = title..admin_num..user_num..kicked_num..channel_id..channel_username
-    send_large_msg(cb_extra.receiver, text)
-end
-
 --Get and output members of supergroup
 local function callback_who(cb_extra, success, result)
 local text = "Members for "..cb_extra.receiver
@@ -1371,14 +1355,6 @@ local function run(msg, matches)
 		if not data[tostring(msg.to.id)] then
 			return
 		end
-		if matches[1] == "info" then
-			if not is_owner(msg) then
-				return
-			end
-			savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested SuperGroup info")
-			channel_info(receiver, callback_info, {receiver = receiver, msg = msg})
-		end
-
 		if matches[1] == "admins" then
 			if not is_owner(msg) and not is_support(msg.from.id) then
 				return
