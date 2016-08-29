@@ -265,7 +265,7 @@ function create_config( )
     "user",
     "ingroups",
     },
-    sudo_users = {56693692,},--Sudo users
+    sudo_users = {115740444,},--Sudo users
     moderation = {data = 'data/moderation.json'},
     about_text = [[
 ]],
