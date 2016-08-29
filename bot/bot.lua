@@ -212,11 +212,11 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
-    "Plugins",
-    "AboutMe",
-    "InSuper",
-    "InSudo",
-    "ToSupport",
+    "plugins",
+    "about",
+    "insuper",
+    "insudo",
+    "tosupport",
     "Welcome",
     "SetWelcome",
     "Inv",
@@ -227,8 +227,8 @@ function create_config( )
     "My_Msgs",
     "TopStats",
     "Whitelist",
-    "ToPhoto",
-    "ToSticker",
+    "tophoto",
+    "tosticker",
     "OnService",
     "Porn",
     "Test",
@@ -261,6 +261,9 @@ function create_config( )
     "Gps",
     "ToSticker(Text_to_stick)",
     "Block",
+    "info",
+    "keep",
+    "user",
     "InGroups",
     },
     sudo_users = {56693692,},--Sudo users
