@@ -232,6 +232,8 @@ function create_config( )
     "onservice",
     "porn",
     "test",
+    "rmsg",
+    "time",
     "time",
     "fantasy_writer",
     "logo",
