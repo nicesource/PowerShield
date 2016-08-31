@@ -246,7 +246,6 @@ function create_config( )
     "inadmin",
     "qrcode",
     "filter",
-    "plist",
     "antileave",
     "antispam",
     "aparat",
