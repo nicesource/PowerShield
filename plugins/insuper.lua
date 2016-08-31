@@ -1,4 +1,4 @@
-﻿--[[
+--[[
 
      **************************
      *  BlackPlus Plugins...  *
@@ -590,7 +590,33 @@ local function unlock_group_contacts(msg, data, target)
     return reply_msg(msg.id,"> 🔓شِیر کردن آزاد شد", ok_cb, false)
   end
 end
+local function lock_group_reply(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_reply_lock = data[tostring(target)]['settings']['lock_reply']
+  if group_reply_lock == 'yes' then
+    return reply_msg(msg.id,"> 🔒ریپلای از قبل قفل بود", ok_cb, false)
+  else
+    data[tostring(target)]['settings']['lock_reply'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return reply_msg(msg.id,"> 🔒ریپلای قفل شد", ok_cb, false)
+  end
+end
 
+local function unlock_group_reply(msg, data, target)
+  if not is_momod(msg) then
+    return
+  end
+  local group_reply_lock = data[tostring(target)]['settings']['lock_reply']
+  if group_reply_lock == 'no' then
+    return reply_msg(msg.id,"> 🔓ریپلای از قبل آزاد بود", ok_cb, false)
+  else
+    data[tostring(target)]['settings']['lock_reply'] = 'no'
+    save_data(_config.moderation.data, data)
+    return reply_msg(msg.id,"> 🔓ریپلای آزاد شد", ok_cb, false)
+  end
+end
 local function enable_strict_rules(msg, data, target)
   if not is_momod(msg) then
     return
@@ -768,12 +794,17 @@ end
 		end
 	end
 	if data[tostring(target)]['settings'] then
+		if not data[tostring(target)]['settings']['lock_reply'] then
+			data[tostring(target)]['settings']['lock_reply'] = 'no'
+		end
+end
+	if data[tostring(target)]['settings'] then
 		if not data[tostring(target)]['settings']['lock_fwd'] then
 			data[tostring(target)]['settings']['lock_fwd'] = 'no'
 		end
 	end
   local settings = data[tostring(target)]['settings']
-  local text = "SuperGroup settings:\n\nLock Links > "..settings.lock_link.."\nLock Webpage > "..settings.lock_webpage.."\nLock Tag > "..settings.lock_tag.."\nLock Emoji > "..settings.lock_emoji.."\nLock English > "..settings.lock_eng.."\nLock Badword > "..settings.lock_badw.."\nLock Flood > "..settings.flood.."\nFlood sensitivity > "..NUM_MSG_MAX.."\nLock Spam > "..settings.lock_spam.."\nLock Contacts > "..settings.lock_contacts.."\nLock Arabic/Persian > "..settings.lock_arabic.."\nLock Member > "..settings.lock_member.."\nLock RTL > "..settings.lock_rtl.."\nLock Forward > "..settings.lock_fwd.."\nLock TGservice > "..settings.lock_tgservice.."\nLock Sticker > "..settings.lock_sticker.."\nPublic > "..settings.public.."\nStrict Settings > "..settings.strict
+  local text = "SuperGroup settings:\n\nLock Links > "..settings.lock_link.."\nLock Webpage > "..settings.lock_webpage.."\nLock Tag > "..settings.lock_tag.."\nLock Emoji > "..settings.lock_emoji.."\nLock English > "..settings.lock_eng.."\nLock Badword > "..settings.lock_badw.."\nLock Flood > "..settings.flood.."\nFlood sensitivity > "..NUM_MSG_MAX.."\nLock Spam > "..settings.lock_spam.."\nLock Contacts > "..settings.lock_contacts.."\nLock Arabic/Persian > "..settings.lock_arabic.."\nLock Member > "..settings.lock_member.."\nLock RTL > "..settings.lock_rtl.."\nLock Forward > "..settings.lock_fwd.."\nLock Reply > "..settings.lock_reply.."\nLock TGservice > "..settings.lock_tgservice.."\nLock Sticker > "..settings.lock_sticker.."\nPublic > "..settings.public.."\nStrict Settings > "..settings.strict
   reply_msg(msg.id, text, ok_cb, false)
 end
 
@@ -1878,6 +1909,10 @@ local function run(msg, matches)
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked flood ")
 				return lock_group_flood(msg, data, target)
 			end
+			if matches[2] == 'reply' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked reply ")
+				return lock_group_reply(msg, data, target)
+			end
 			if matches[2] == 'arabic' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked arabic ")
 				return lock_group_arabic(msg, data, target)
@@ -1979,6 +2014,10 @@ local function run(msg, matches)
 			if matches[2] == 'webpage' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked WebLink")
 				return unlock_group_webpage(msg, data, target)
+			end
+			if matches[2] == 'reply' then
+				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked reply")
+				return unlock_group_reply(msg, data, target)
 			end
 			if matches[2] == 'emoji' then
 				savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked Emoji")
